@@ -1,0 +1,87 @@
+Aliens have invaded the ship.
+
+        How many rooms on the ship?
+        5
+        ***Each room will print own description upon entry, and then ***tells the engine what room to run next out of the map
+
+        Bridge
+            Whoa the Gothon bridge. And a real live Gothon at the helm. Oh shooooot. Another real live Gothon!!!
+            M.F --> He shoots you
+            M.L --> bump into control panel railing, fall over and shoot him real cool like, like Mission Impossible, on as you fall. He laughs, jumps over the railing, and swallows you whole.
+            T.R --> You reacted quickly he didn't see you in his peripheral. Next Action!
+                    Any directional move --> Stand Your Ground
+                    shoot --> haven't you learned anything about Gothon's!!
+                    tell a joke --> code auto loads a joke.
+
+        Escapepod  -- You're in the Escapepod room. There are 5 escape pods, but only one is operational. You only have 30 seconds to figure out which one works before the bomb goes off (good job setting that timer so short!).
+                    How to decide?
+                        Innie Minnie Miny Mo
+                        it's pod number 3. M.F; get in; you notice a trinket on the ground; get back out, grab it, get back in, shoot out, watch the ship explode. You won? did you get all the random objects? yes? Bonus
+
+        LaserWeaponArmory-- Ahh a large rectangular room lined with shelves and shelve of weapons.
+              M.F --> you run into a shelf of laser blasters. (can't pick up)
+              M.L --> on the bottom shelf are laser blaster, on the top grenades; M.F. --> the back wall is also lined. What's down at the other end?; T.R. --> walk down the aisle, there it is on the bottom shelf with a piece of dusty canvas covering it.
+              T.R --> heading down aisle, cool stuff on the left and right, but not what you want. at end of aisle, turn left? " ".
+
+
+        toilet -- You found the toilet. It's a small room and you can't really move. What do you want to do?
+                  -- pee; anything else
+                  -- poo; anything else
+                  -- look in mirror cabinet -- you're warm
+                  -- Find gothon hair gel! (B.P)
+                  *Set bomb in here!
+
+        bedroom
+            Ahh where the magic happens....you know cause gothon's are really into harry potter and they practice their...umm..."spells" in the bedroom.
+            M.F. -- There's a big squishy bed
+            M.L. -- A Gothon dresser. I wonder what's inside? --nothing but clothes
+            M.R. -- A gothon closet. open--> gothon scrapbook hiding in the corner (B.P).
+
+It begins with our hero face to face with a Gothon. The Gothon's only weakness is jokes.
+
+      what does our hero look like? -- lean muscular build, white tunic on, bandolier of 5.56 across the chest, AR-Pistol in hands, cigar, brown hair, white sweat band tucked under flowing hair
+      what does a gothon look like? -- Tall, hardened booger color, huge eyes, can't turn eyes so has to rotate head.
+      what is the joke? -- "Hey Gothon!"
+                            "Hey what you puny sack of meat?"
+                            "Knock Knock..."
+                            "(with great reluctance, producing physical perspiration, the Gothon replies) Who...who's there?"
+                            "I eat mop."
+                            "I ea..eat mop who?"
+                            "That's revolting!!"
+                            (And like that the Gothon cracks a slight smile, let's out a little chuckle, and then falls dead.)
+
+Backpack: Can pick up random items in the rooms (1 in each room)
+        * if the player gets all the random objects then they get a special bonus at the end of the game
+        ** write code that outputs "Can't Pick that Up. It's superglued down." when backpackable?==false
+
+
+
+
+Directions: *Zork doesn't give direction commands, you just type in the direction you want to head. What would be helpful is giving a list at the beginning of the words acceptable for orienteering.
+          "This is space, there are no cardinal directions!"
+              Forward
+              backward
+              Turn Left
+              Turn Right
+
+Verbs:
+      walk-- jumps one space
+      run -- jumps two spaces
+      tell a joke
+      shoot -- raises gun aims and shoots
+      pee
+      poo
+      pick up -- places random object in backpack hash
+
+                              Bridge
+                                |
+                                |
+                  Bedroom ----     ---- LaserWeaponArmory
+                                |
+                                | ----toilet
+                                | start
+                  escapeod ---- |
+
+                                ^
+                                |
+                                Corridor

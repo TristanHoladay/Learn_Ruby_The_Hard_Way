@@ -1,0 +1,6 @@
+#!/Users/tristan/Ruby21-x64/bin/env ruby
+
+require 'ex47'
+
+game = Engine.new(Map.new('outside_pyramid'))
+game.play()

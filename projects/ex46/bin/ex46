@@ -1,0 +1,4 @@
+#!/Users/tristan/Ruby21-x64/bin/env ruby
+require 'ex46'
+
+try = HelloWorld.new

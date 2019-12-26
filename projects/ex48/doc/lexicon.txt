@@ -1,0 +1,16 @@
+While the method match returns an object (i.e. something “truthy”) when the pattern matches (and nil when it doesn’t), the method scan returns an array with all the occurances of text that match the pattern.
+
+So let’s use it:
+
+text = "A regular expression is a sequence of characters that define a search pattern."
+
+p text.scan(/\b[aeiou][a-z]*\b/)
+
+to capture certain parts or words of a regular expression enclose that bit in parentheses.
+
+\d is the same as [0-9] (any digit)
+\D is the same as [^0-9] (everything except digits)
+\w is the same as [A-Za-z_\-], called word character (i.e. this allows all lowercase and uppercase latin letters, as well as underscores and dashes)
+\W is the same as [^A-Za-z_\-] (everything that is not a word character)
+\s means “any whitespace”, including spaces, tabs, and linebreaks
+\S everything that is not whitespace

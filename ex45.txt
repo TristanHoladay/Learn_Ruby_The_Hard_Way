@@ -1,0 +1,52 @@
+Let's build a game!
+
+            INDIANA JONES AND THE TOMB OF PHAROAH
+    You are playing as class hero Indiana Jones. Indy is on a new adventure to discover the lost tomb of Pharoah 'Ramen' (yes part of his fame is that he invented ramen noodles)
+    It's 1944
+    The Nazis are also looking for the lost tomb and they're hot on the heels of Indy.
+    The tomb is inside the pyramid of 'Helth'
+    Indy discovers the entrance to the tomb
+    Inside are 4 rooms each with a passage to the next, one on each side of the pyramid.
+    There is one that leads into the tomb
+    To get the door open so Indy can slide down the rock tunnel to the tomb he must complete a task in all 4 rooms
+    Randomly Nazis could appear trying to stop him and complete the tasks themselves
+    When confronted by a nazi the game will generate randomly whether the nazi got the drop on Indy or if Indy gets the drop on the Nazi
+    Indy and his Nazi foes have health that can be depleted.
+    Indy also has the ability to level up his punches and kicks
+    He might find a dead Nazi's gun
+    At the end Indy gets the girl.
+
+
+    Nouns
+      Nazi, Indy, tomb, pyramid, tunnel, door, hall, gun, backpack, health, damage, traps, puzzles, Rooms 1-4
+
+    Verbs
+      Punch, Kick, Slide, run, crawl, duck, pickup, talk (?), shoot, read, die, level-up, open, shut, left, right, forward, back, Select
+
+
+  Ideas:
+    Random Nazis
+    Random Advantage
+    Don't make it to where it's 50/50 chance of beating Nazi, make it in favor of player
+    Random Artifacts
+    *The ability to go back ? --- would need to create an engine/map that returns the previous scene
+
+    Classes         # room classes will include combatable and player/nazi classes 
+      Rooms 1-4
+      Tomb
+      Nazis
+      Indy
+      Artifacts
+      Map
+      Engine
+
+
+      Modules
+        Combatable
+        Moveable (?)
+        Backpackable
+
+    Research Points:
+      using random generators
+      how to correspond an object with *** or ###
+      how to level-up (i think i have an idea of this though) (incremental based on number of times action is used)
