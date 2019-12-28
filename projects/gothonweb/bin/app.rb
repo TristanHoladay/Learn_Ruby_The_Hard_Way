@@ -1,6 +1,7 @@
 require 'sinatra'
 require './lib/gothonweb/map.rb'
 require './bin/users.rb'
+require './bin/storing_users.rb'
 
 set :port, 8080
 set :static, true
@@ -10,6 +11,7 @@ enable :sessions
 set :session_secret, 'BADSECRET'
 
 include Users
+include StoringNames
 
 # def authorize!
 #   redirect '/login' unless authorized?
@@ -24,11 +26,8 @@ post '/player' do
   #code to verify account
   @name = params[:username]
   @password = params[:password]
-  #user_creds = [@name, @password]
-  @user = User.new(username: params["username"], password: params["password"])
-  @user.save
 
-  store_user(@name, @password)
+  StoringNames.store_users('names.txt', @name, @password)
   # validation = UserValidator.new(@name, @password, read_user_creds)
   #
   #
