@@ -1,7 +1,9 @@
 require 'sinatra'
+require 'mysql2'
 require './lib/gothonweb/map.rb'
 require './bin/users.rb'
 require './bin/storing_users.rb'
+require 'logger'
 
 set :port, 8080
 set :static, true
@@ -9,43 +11,76 @@ set :public_folder, File.dirname(__FILE__) + '/static'
 set :views, "views"
 enable :sessions
 set :session_secret, 'BADSECRET'
+set :show_exceptions, :after_handler
 
 include Users
 include StoringNames
 
-# def authorize!
-#   redirect '/login' unless authorized?
-# end
+mysql = Mysql2::Client.new(
+  :host => "localhost",
+  :username => "root",
+  :password => '',
+  :port => 3306,
+  :database => "gothon_db"
+)
+
+class MyLog
+  def self.log
+    if @logger.nil?
+      @logger = Logger.new STDOUT
+      @logger.level = Logger::DEBUG
+      @logger.datetime_format = '%Y-%m-%d %H:%M:%S '
+    end
+    @logger
+  end
+end
+
+error 'notUniqueUsernameException' do
+  "Sorry that username is taken. Please try something else."
+end
+
 
 get '/' do
   session[:room] = 'START'
   redirect to('/login')
 end
 
-post '/player' do
-  #code to verify account
+get '/login' do
+  @results = mysql.query("SELECT * FROM users")
+  erb :login, :locals => {'results' => @results}
+end
+
+post '/login' do
   @name = params[:username]
   @password = params[:password]
 
-  StoringNames.store_users('names.txt', @name, @password)
-  # validation = UserValidator.new(@name, @password, read_user_creds)
-  #
-  #
-  # @names = read_names
-  # validation = UserValidator.new()
-  # #or code to create account
-  username = params[:username]
-  erb :player, :locals => {'username' => username}
-end
+  #code to verify account
+  
 
-get '/login' do
-  erb :login
+  # StoringNames.store_users('names.txt', @name, @password)
+  erb :player, :locals => {'username' => @name}
 end
 
 get '/signup' do
   erb :sign_up
 end
 
+post '/signup'  do
+  # input new user into database
+  @name = params[:username]
+  @password = params[:password]
+  
+  insert = mysql.query("INSERT INTO users (username, password) VALUES ('#{@name}', '#{@password}')")
+  if(req.error)
+    raise NotUniqueUsernameException
+  end 
+  
+  erb :player, :locals => {'username' => @name}
+end
+
+get '/player' do
+  erb :player
+end
 
 get '/game' do
   room = Map::load_room(session)
@@ -55,10 +90,6 @@ get '/game' do
   else
     erb :you_died
   end
-end
-
-get '/error' do
-  erb :invalid_response
 end
 
 post '/game' do
@@ -82,18 +113,11 @@ post '/game' do
     end
 end
 
+get '/error' do
+  erb :invalid_response
+end
 
-# get '/hello/' do
-#   erb :hello_form
-# end
-#
-# post '/hello/' do
-#   greeting = params[:greeting] || "Hi There"
-#   name = params[:name] || "Nobody"
-#
-#   erb :index, :locals => {'greeting' => greeting, 'name' => name}
-# end
-#
+
 # post '/save_image' do
 #
 #   @filename = params[:file][:filename]
